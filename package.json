@@ -1,29 +1,36 @@
 {
-  "name": "rollup-plugin-template",
+  "name": "rollup-plugin-confuser",
   "version": "1.0.0",
-  "description": "The template for my rollup plugins.",
+  "description": "Obfuscate your project using js-confuser.",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "type": "module",
-  "keywords": [],
+  "keywords": [
+    "obfuscate",
+    "js-confuser",
+    "rollup"
+  ],
   "author": "Angelo II",
   "license": "MIT",
-  "homepage": "https://github.com/AngeloCore/rollup-plugin-template",
+  "homepage": "https://github.com/AngeloCore/rollup-plugin-confuser",
   "funding": "https://paypal.me/AngeloCore",
   "repository": {
-    "url": "AngeloCore/rollup-plugin-template"
+    "url": "AngeloCore/rollup-plugin-confuser"
   },
   "scripts": {
-    "prepublishOnly": "npm run clean && npm run format && npm run build",
+    "prepublishOnly": "npm run clean && npm run format",
     "format": "prettier --write .",
-    "build": "tsc",
     "clean": "node scripts/cleanup.js",
-    "test": "npm run build && cd test && rollup -c rollup.config.js && node output/index.js",
+    "test": "cd test && rollup -c rollup.config.js && node output/index.js",
     "test:clean": "npm run test && npm run clean"
   },
   "devDependencies": {
     "prettier": "^3.1.0",
-    "rollup": "^4.5.0",
-    "typescript": "^5.3.2"
+    "rollup": "^4.5.1"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^5.0.5",
+    "js-confuser": "^1.7.1",
+    "smob": "^1.4.1"
   }
 }

@@ -1,6 +1,5 @@
 .git
 scripts
-src
 test
 .gitignore
 .prettierrc

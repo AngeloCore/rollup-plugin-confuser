@@ -1,31 +1,31 @@
-# rollup-plugin-template
+# rollup-plugin-confuser
 
-The template for my rollup plugins.
+Obfuscate your project using [JS Confuser](https://github.com/MichaelXF/js-confuser).
 
 ## Installation
 
 npm:
 
 ```console
-npm i rollup-plugin-template -D
+npm i rollup-plugin-confuser -D
 ```
 
 yarn:
 
 ```console
-yarn add rollup-plugin-template -D
+yarn add rollup-plugin-confuser -D
 ```
 
 pnpm:
 
 ```console
-pnpm add rollup-plugin-template -D
+pnpm add rollup-plugin-confuser -D
 ```
 
 ## Usage
 
 ```js
-import template from "rollup-plugin-template";
+import confuser from "rollup-plugin-confuser";
 
 export default {
   input: "src/index.js",
@@ -33,33 +33,52 @@ export default {
     dir: "output",
     format: "cjs"
   },
-  plugins: [template()]
+  plugins: [
+    confuser({
+      global: false,
+      include: ["src/index.js"]
+    })
+  ]
 };
 ```
 
 ## Options
 
-### `cool`
+### `global`
 
 Type: `boolean` <br>
 Default: `true`
 
-Determines if the plugin is cool
+If set to `true` the plugin will obfuscate the whole project, including all the dependencies.
 
-## Exports
+### `options`
 
-### `doIt(thing: string)`
+Type: `boolean` <br>
+Default: `true`
 
-Returns: `string`
+Custom js-confuser options, you can see all the available options in their [documentation](https://github.com/MichaelXF/js-confuser#options).
 
-It does the specific thing.
+### `exclude`
+
+Type: `String` | `Array[...String]`<br>
+Default: `null`
+
+A [picomatch pattern](https://github.com/micromatch/picomatch), or array of patterns, which specifies the files in the build the plugin should _ignore_. By default no files are ignored.
+
+### `include`
+
+Type: `String` | `Array[...String]`<br>
+Default: `null`
+
+A [picomatch pattern](https://github.com/micromatch/picomatch), or array of patterns, which specifies the files in the build the plugin should operate on. By default all files are targeted.
 
 ## Information
 
 ### Resources
 
-- [Github](https://github.com/AngeloCore/rollup-plugin-template)
+- [Github](https://github.com/AngeloCore/rollup-plugin-confuser)
 - [Rollup](https://rollupjs.org/)
+- [JS Confuser](https://github.com/MichaelXF/js-confuser)
 
 Made by [Angelo II](https://github.com/AngeloCore)
 
